@@ -8,7 +8,7 @@ const path = require('path');
 const express = require('express');
 const logPath = path.join(__dirname, './RestMenu.log');
 log.transports.file.level = 'info';
-log.transports.file.file = logPath;
+log.transports.file = logPath;
 const app = express()
 app.set('view engine', 'ejs')
 

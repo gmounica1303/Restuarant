@@ -5,7 +5,7 @@ const emoji= require('node-emoji');
 const webServerConfig = require('../config/web-server');
 const logPath = path.join(__dirname, './../RestMenu.log');
 log.transports.file.level = 'info';
-log.transports.file.file = logPath;
+log.transports.file = logPath;
 
 async function getMenu(req, res) {  
     log.info('Getting Rest Menu..');

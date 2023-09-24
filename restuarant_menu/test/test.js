@@ -1,33 +1,19 @@
 const chai = require('chai');
+const chaihttp = require('chai-http');
 const request = require('supertest');
 const express = require('express');
 const bodyParser = require('body-parser');
+const server= require("../services/web-server");
+const apitest= require('../router/api/getdata.router');
 const app = express();
 const expect = chai.expect;
-app.set('views',path.join(__dirname,'app.js'))
-app.set('view engine', 'ejs');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+chai.use(chaihttp);
 
-const notes = [{
-    noteId: 1,
-    noteContent: "Hey guys, add your important notes here."
-}];
-
-app.get("/", (req, res) => {
-    res.render("home", {
-        data: notes
-    });
-});
-
-    describe('GET /', function () {
-        it('should return 200 OK and render home view', function (done) {
-            request(app)
-                .get('/')
-                .expect(200)
-                .end(function (err, res) {
-                    if (err) return done(err);
-                    done();
+    describe('GET / apitest', function () {
+        var url="http://localhost:3037/Menu";
+        it('should return 200 OK and render home view',function() {
+            request(url, function(error, response) {
+                expect(response.statusCode).to.equal(200);
                 });
         });
     });
