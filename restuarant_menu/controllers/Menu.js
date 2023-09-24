@@ -7,6 +7,7 @@ const logPath = path.join(__dirname, './../RestMenu.log');
 log.transports.file.level = 'info';
 log.transports.file = logPath;
 
+//This function receives the call and sends file data
 async function getMenu(req, res) {  
     log.info('Getting Rest Menu..');
     try{
